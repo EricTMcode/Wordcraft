@@ -13,5 +13,6 @@ struct WordcraftApp: App {
         WindowGroup {
             ContentView()
         }
+        .windowResizability(.contentSize)
     }
 }
