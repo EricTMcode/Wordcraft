@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var viewModel = ViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HStack(spacing: 2) {
+            ForEach(0..<viewModel.columns.count, id: \.self) { i in
+                VStack(spacing: 2) {
+                    let column = viewModel.columns[i]
+                    
+                    ForEach(column) { tile in
+                        Button {
+                            // select this letter
+                        } label: {
+                            Text(tile.letter)
+                                .font(.largeTitle.weight(.bold))
+                                .fontDesign(.rounded)
+                                .frame(width: 120, height: 50)
+                                .foregroundStyle(.white)
+                                .background(.blue.gradient)
+                        }
+                        .buttonStyle(.borderless)
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
