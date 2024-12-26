@@ -18,14 +18,14 @@ struct ContentView: View {
                     
                     ForEach(column) { tile in
                         Button {
-                            // select this letter
+                            viewModel.select(tile)
                         } label: {
                             Text(tile.letter)
                                 .font(.largeTitle.weight(.bold))
                                 .fontDesign(.rounded)
                                 .frame(width: 120, height: 50)
-                                .foregroundStyle(.white)
-                                .background(.blue.gradient)
+                                .foregroundStyle(viewModel.forground(for: tile))
+                                .background(viewModel.background(for: tile).gradient)
                         }
                         .buttonStyle(.borderless)
                     }

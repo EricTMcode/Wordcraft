@@ -5,7 +5,7 @@
 //  Created by Eric on 26/12/2024.
 //
 
-import Foundation
+import SwiftUI
 
 @Observable
 class ViewModel {
@@ -27,7 +27,7 @@ class ViewModel {
 
     func select(_ tile: Tile) {
         if selected.last == tile && selected.count > 3 {
-            // check their word
+            checkWord()
         } else if let index = selected.firstIndex(of: tile) {
             if selected.count == 1 {
                 selected.removeLast()
@@ -37,5 +37,38 @@ class ViewModel {
         } else {
             selected.append(tile)
         }
+    }
+
+    func background(for tile: Tile) -> Color {
+        if selected.contains(tile) {
+            .white
+        } else {
+            .blue
+        }
+    }
+
+    func forground(for tile: Tile) -> Color {
+        if selected.contains(tile) {
+            .black
+        } else {
+            .white
+        }
+    }
+
+    func remove(_ tile: Tile) {
+        guard let position = columns[tile.column].firstIndex(of: tile) else { return }
+
+        withAnimation {
+            columns[tile.column].remove(at: position)
+            columns[tile.column].insert(Tile(column: tile.column), at: 0)
+        }
+    }
+
+    func checkWord() {
+        for tile in selected {
+            remove(tile)
+        }
+
+        selected.removeAll()
     }
 }
