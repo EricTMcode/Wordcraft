@@ -17,6 +17,8 @@ class ViewModel {
     private var targetLetter = "A"
     private var targetLength = 0
 
+    var currentRule: Rule!
+
     let dictionary: Set<String> = {
         guard let url = Bundle.main.url(forResource: "dictionary", withExtension: "txt") else {
             fatalError("Couldn't locate dictionary.txt")
@@ -40,6 +42,8 @@ class ViewModel {
 
             columns.append(column)
         }
+
+        selectRule()
     }
 
     func select(_ tile: Tile) {
@@ -86,9 +90,14 @@ class ViewModel {
 
         guard usedWords.contains(word) == false else { return }
         guard dictionary.contains(word.lowercased()) else { return }
+        guard currentRule.predicate(word) else { return }
 
         for tile in selected {
             remove(tile)
+        }
+
+        withAnimation {
+            selectRule()
         }
 
         selected.removeAll()
@@ -120,7 +129,7 @@ class ViewModel {
         word.first == word.last
     }
 
-    func hasUniqueLetter(_ word: String) -> Bool {
+    func hasUniqueLetters(_ word: String) -> Bool {
         word.count == Set(word).count
     }
 
@@ -148,4 +157,43 @@ class ViewModel {
         return vowels == consonants
     }
 
+    func count(for letter: String) -> Int {
+        var count = 0
+
+        for column in columns {
+            for tile in column {
+                if tile.letter == letter {
+                    count += 1
+                }
+            }
+        }
+
+        return count
+    }
+
+    func selectRule() {
+        let safeLetters = "ABCDEFGHILMNOPRSTUW".map(String.init)
+        targetLetter = safeLetters.filter { count(for: $0) >= 2 }.randomElement() ?? "A"
+        targetLength = Int.random(in: 3...6)
+
+        let rules = [
+            Rule(name: "Starts with \(targetLetter)", predicate: startsWithLetter),
+            Rule(name: "Contains \(targetLetter)", predicate: containsLetter),
+            Rule(name: "Does not contain \(targetLetter)", predicate: doesNotContainLetter),
+            Rule(name: "Contains two identical adjacent vowels", predicate: containsTwoAdjacentVowels),
+            Rule(name: "Has exactly \(targetLength) letters", predicate: isLengthN),
+            Rule(name: "Has at least \(targetLength) letters", predicate: isAtLeastLengthN),
+            Rule(name: "Begins and ends with the same letter", predicate: beginsAndEndsSame),
+            Rule(name: "Uses each letter only once", predicate: hasUniqueLetters),
+            Rule(name: "Has equal vowels and consonants", predicate: hasEqualVowelsAndConsonants)
+        ]
+
+        let newRule = rules.randomElement()!
+
+        if newRule.name.contains("at least") && targetLength == 3 {
+            selectRule()
+        } else {
+            currentRule = newRule
+        }
+    }
 }

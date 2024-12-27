@@ -13,6 +13,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
+                Text(viewModel.currentRule.name)
+                    .contentTransition(.numericText())
+
                 Spacer()
 
                 Text("**Score:** \(viewModel.score)")

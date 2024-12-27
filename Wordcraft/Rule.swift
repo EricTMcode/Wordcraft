@@ -9,5 +9,5 @@ import Foundation
 
 struct Rule {
     var name: String
-    var predicate: (String) -> Bool 
+    var predicate: (String) -> Bool
 }
