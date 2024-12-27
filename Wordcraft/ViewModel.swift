@@ -78,10 +78,16 @@ class ViewModel {
     }
 
     func checkWord() {
+        let word = selected.map(\.letter).joined()
+
+        guard usedWords.contains(word) == false else { return }
+        guard dictionary.contains(word.lowercased()) else { return }
+
         for tile in selected {
             remove(tile)
         }
 
         selected.removeAll()
+        usedWords.insert(word)
     }
 }
