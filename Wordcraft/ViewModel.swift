@@ -11,6 +11,19 @@ import SwiftUI
 class ViewModel {
     var columns = [[Tile]]()
     private var selected = [Tile]()
+    private var usedWords = Set<String>()
+
+    let dictionary: Set<String> = {
+        guard let url = Bundle.main.url(forResource: "dictionary", withExtension: "txt") else {
+            fatalError("Couldn't locate dictionary.txt")
+        }
+
+        guard let contents = try? String(contentsOf: url, encoding: .utf8) else {
+            fatalError("Couldn't load dictionary.txt")
+        }
+
+        return Set(contents.components(separatedBy: .newlines))
+    }()
 
     init() {
         for i in 0..<5 {

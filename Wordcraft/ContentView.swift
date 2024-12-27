@@ -28,6 +28,7 @@ struct ContentView: View {
                                 .background(viewModel.background(for: tile).gradient)
                         }
                         .buttonStyle(.borderless)
+                        .transition(.push(from: .top))
                     }
                 }
             }
