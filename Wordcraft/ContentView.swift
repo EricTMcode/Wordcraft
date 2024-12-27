@@ -11,28 +11,39 @@ struct ContentView: View {
     @State private var viewModel = ViewModel()
     
     var body: some View {
-        HStack(spacing: 2) {
-            ForEach(0..<viewModel.columns.count, id: \.self) { i in
-                VStack(spacing: 2) {
-                    let column = viewModel.columns[i]
-                    
-                    ForEach(column) { tile in
-                        Button {
-                            viewModel.select(tile)
-                        } label: {
-                            Text(tile.letter)
-                                .font(.largeTitle.weight(.bold))
-                                .fontDesign(.rounded)
-                                .frame(width: 120, height: 50)
-                                .foregroundStyle(viewModel.forground(for: tile))
-                                .background(viewModel.background(for: tile).gradient)
+        VStack {
+            HStack {
+                Spacer()
+
+                Text("**Score:** \(viewModel.score)")
+            }
+            .font(.title)
+
+            HStack(spacing: 2) {
+                ForEach(0..<viewModel.columns.count, id: \.self) { i in
+                    VStack(spacing: 2) {
+                        let column = viewModel.columns[i]
+
+                        ForEach(column) { tile in
+                            Button {
+                                viewModel.select(tile)
+                            } label: {
+                                Text(tile.letter)
+                                    .font(.largeTitle.weight(.bold))
+                                    .fontDesign(.rounded)
+                                    .frame(width: 120, height: 50)
+                                    .foregroundStyle(viewModel.forground(for: tile))
+                                    .background(viewModel.background(for: tile).gradient)
+                            }
+                            .buttonStyle(.borderless)
+                            .transition(.push(from: .top))
                         }
-                        .buttonStyle(.borderless)
-                        .transition(.push(from: .top))
                     }
                 }
             }
         }
+        .padding()
+        .fixedSize()
     }
 }
 

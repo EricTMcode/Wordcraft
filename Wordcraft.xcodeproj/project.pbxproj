@@ -6,17 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		074D6CB32D1E76D1004F05F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074D6CA82D1E76D1004F05F9 /* Preview Assets.xcassets */; };
+		074D6CB42D1E76D1004F05F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074D6CAA2D1E76D1004F05F9 /* Assets.xcassets */; };
+		074D6CB52D1E76D1004F05F9 /* dictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = 074D6CAC2D1E76D1004F05F9 /* dictionary.txt */; };
+		074D6CB62D1E76D1004F05F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D6CAB2D1E76D1004F05F9 /* ContentView.swift */; };
+		074D6CB72D1E76D1004F05F9 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D6CAD2D1E76D1004F05F9 /* Rule.swift */; };
+		074D6CB82D1E76D1004F05F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D6CAE2D1E76D1004F05F9 /* Tile.swift */; };
+		074D6CB92D1E76D1004F05F9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D6CAF2D1E76D1004F05F9 /* ViewModel.swift */; };
+		074D6CBA2D1E76D1004F05F9 /* WordcraftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D6CB12D1E76D1004F05F9 /* WordcraftApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		074D6C8C2D1D1F7A004F05F9 /* Wordcraft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordcraft.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		074D6CA82D1E76D1004F05F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		074D6CAA2D1E76D1004F05F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		074D6CAB2D1E76D1004F05F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		074D6CAC2D1E76D1004F05F9 /* dictionary.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dictionary.txt; sourceTree = "<group>"; };
+		074D6CAD2D1E76D1004F05F9 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		074D6CAE2D1E76D1004F05F9 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		074D6CAF2D1E76D1004F05F9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		074D6CB02D1E76D1004F05F9 /* Wordcraft.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wordcraft.entitlements; sourceTree = "<group>"; };
+		074D6CB12D1E76D1004F05F9 /* WordcraftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordcraftApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		074D6C8E2D1D1F7A004F05F9 /* Wordcraft */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Wordcraft;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		074D6C892D1D1F7A004F05F9 /* Frameworks */ = {
@@ -32,7 +44,7 @@
 		074D6C832D1D1F7A004F05F9 = {
 			isa = PBXGroup;
 			children = (
-				074D6C8E2D1D1F7A004F05F9 /* Wordcraft */,
+				074D6CB22D1E76D1004F05F9 /* Wordcraft */,
 				074D6C8D2D1D1F7A004F05F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +55,30 @@
 				074D6C8C2D1D1F7A004F05F9 /* Wordcraft.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		074D6CA92D1E76D1004F05F9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				074D6CA82D1E76D1004F05F9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		074D6CB22D1E76D1004F05F9 /* Wordcraft */ = {
+			isa = PBXGroup;
+			children = (
+				074D6CB12D1E76D1004F05F9 /* WordcraftApp.swift */,
+				074D6CAF2D1E76D1004F05F9 /* ViewModel.swift */,
+				074D6CAB2D1E76D1004F05F9 /* ContentView.swift */,
+				074D6CAE2D1E76D1004F05F9 /* Tile.swift */,
+				074D6CAD2D1E76D1004F05F9 /* Rule.swift */,
+				074D6CAC2D1E76D1004F05F9 /* dictionary.txt */,
+				074D6CAA2D1E76D1004F05F9 /* Assets.xcassets */,
+				074D6CB02D1E76D1004F05F9 /* Wordcraft.entitlements */,
+				074D6CA92D1E76D1004F05F9 /* Preview Content */,
+			);
+			path = Wordcraft;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +95,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				074D6C8E2D1D1F7A004F05F9 /* Wordcraft */,
 			);
 			name = Wordcraft;
 			packageProductDependencies = (
@@ -109,6 +142,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074D6CB32D1E76D1004F05F9 /* Preview Assets.xcassets in Resources */,
+				074D6CB42D1E76D1004F05F9 /* Assets.xcassets in Resources */,
+				074D6CB52D1E76D1004F05F9 /* dictionary.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074D6CB62D1E76D1004F05F9 /* ContentView.swift in Sources */,
+				074D6CB72D1E76D1004F05F9 /* Rule.swift in Sources */,
+				074D6CB82D1E76D1004F05F9 /* Tile.swift in Sources */,
+				074D6CB92D1E76D1004F05F9 /* ViewModel.swift in Sources */,
+				074D6CBA2D1E76D1004F05F9 /* WordcraftApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

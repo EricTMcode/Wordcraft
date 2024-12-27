@@ -12,6 +12,10 @@ class ViewModel {
     var columns = [[Tile]]()
     private var selected = [Tile]()
     private var usedWords = Set<String>()
+    var score = 0
+
+    private var targetLetter = "A"
+    private var targetLength = 0
 
     let dictionary: Set<String> = {
         guard let url = Bundle.main.url(forResource: "dictionary", withExtension: "txt") else {
@@ -89,5 +93,59 @@ class ViewModel {
 
         selected.removeAll()
         usedWords.insert(word)
+        score += word.count * word.count
     }
+
+    func startsWithLetter(_ word: String) -> Bool {
+        word.starts(with: targetLetter)
+    }
+
+    func containsLetter(_ word: String) -> Bool {
+        word.contains(targetLetter)
+    }
+
+    func doesNotContainLetter(_ word: String) -> Bool {
+        word.contains(targetLetter) == false
+    }
+
+    func isLengthN(_ word: String) -> Bool {
+        word.count == targetLength
+    }
+
+    func isAtLeastLengthN(_ word: String) -> Bool {
+        word.count >= targetLength
+    }
+
+    func beginsAndEndsSame(_ word: String) -> Bool {
+        word.first == word.last
+    }
+
+    func hasUniqueLetter(_ word: String) -> Bool {
+        word.count == Set(word).count
+    }
+
+    func containsTwoAdjacentVowels(_ word: String) -> Bool {
+        word.contains("AA")
+        || word.contains("EE")
+        || word.contains("II")
+        || word.contains("OO")
+        || word.contains("UU")
+    }
+
+    func hasEqualVowelsAndConsonants(_ word: String) -> Bool {
+        var vowels = 0
+        var consonants = 0
+        let vowelsSet: Set<Character> = ["A", "E", "I", "O", "U"]
+
+        for letter in word {
+            if vowelsSet.contains(letter) {
+                vowels += 1
+            } else {
+                consonants += 1
+            }
+        }
+
+        return vowels == consonants
+    }
+
 }
